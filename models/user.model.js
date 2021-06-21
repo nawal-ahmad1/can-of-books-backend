@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bookSchema = require('./book.model');
 
 const userSchema = new mongoose.Schema({
-  email: { type: String },
+  email: String,
   books: [bookSchema],
 });
 
@@ -16,8 +16,7 @@ const seedUserData = () => {
     books: [
       {
         name: 'When Nietzsche Wept',
-        description:
-          'In 19th-century Vienna, a drama of love, fate, Irvin D. Yalom',
+        description: 'In 19th-century Vienna, a drama of love, fate, Irvin D. Yalom',
         status: 'read',
       },
       {
@@ -31,7 +30,7 @@ const seedUserData = () => {
           'n acclaimed bestseller and international sensation, Patrick Suskind',
         status: 'currently-reading',
       },
-    ],
+    ]
   });
 
   console.log(newUser);
@@ -39,4 +38,4 @@ const seedUserData = () => {
   newUser.save();
 };
 
-module.exports = seedUserData;
+module.exports = userModel;
