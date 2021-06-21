@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const axios = require('axios'); // require the package
 const seedUserData = require('./models/user.model');
-const userModel = require('./models/user.model');
 const getBooks = require('./controller/book.controller');
 
 app.use(cors()); 
@@ -25,14 +24,14 @@ app.get('/',
       .get(url)
       .then((response) => response.data)
       .catch((error) => console.log(error));
-    // our endpoint function response
+ 
   }
 );
 
 app.get(
-  '/test', // our endpoint name
+  '/test',
   function (req, res) {
-    // callback function of what we should do with our request
+
     res.send('proof of live');
 
     axios
@@ -44,6 +43,6 @@ app.get(
 );
 
 app.get('/books', getBooks);
-userModel();
+
 seedUserData();
 app.listen(PORT); // kick start the express server to work
