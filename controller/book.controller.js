@@ -7,9 +7,9 @@ const getBooks = (request, response) => {
 
   userModel.find({ email: email }, (error, user) => {
     if (error) {
-      response.send(error);
+      response.send(error.me);
     } else {
-      response.json(user[0].books.name);
+      response.json(user);
     }
   });
 };
