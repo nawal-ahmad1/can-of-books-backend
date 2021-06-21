@@ -28,7 +28,7 @@ const seedUserData = () => {
       {
         name: 'Das Parfum',
         description:
-          'n acclaimed bestseller and international sensation, Patrick Suskind',
+          'In acclaimed bestseller and international sensation, Patrick Suskind',
         status: 'currently-reading',
       },
     ],
@@ -39,4 +39,4 @@ const seedUserData = () => {
   newUser.save();
 };
 
-module.exports = seedUserData;
+module.exports = userModel;

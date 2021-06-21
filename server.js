@@ -5,9 +5,16 @@ const PORT = process.env.PORT;
 const cors = require('cors');
 const axios = require('axios'); // require the package
 const seedUserData = require('./models/user.model');
+const mongoose = require('mongoose');
 const getBooks = require('./controller/book.controller');
 app.use(cors()); // after you initialize your express app instance
 // a server endpoint
+
+mongoose.connect('mongodb://127.0.0.1:27017/myFavoriteBooks', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
 app.get(
   '/', // our endpoint name
   function (req, res) {
