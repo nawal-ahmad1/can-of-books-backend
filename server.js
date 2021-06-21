@@ -1,7 +1,9 @@
 const express = require('express') // require the express package
 const app = express() // initialize your express app instance
-const cors = require('cors');
 require('dotenv').config();
+const PORT = process.env.PORT;
+const cors = require('cors');
+
 const axios = require('axios'); // require the package
 
 app.use(cors()) // after you initialize your express app instance
@@ -22,4 +24,4 @@ app.get('/test', // our endpoint name
   axios.get(url).then(response => response.data).catch(error => console.log(error));
   // our endpoint function response
 })
-app.listen(3000) // kick start the express server to work
+app.listen(PORT) // kick start the express server to work
