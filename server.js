@@ -45,7 +45,7 @@ app.post('/books', createBook);
 
 app.put('/book/:book_idx', updateBook);
 
-app.delete('/book/book_idx', updateBook);
+app.delete('/book/book_idx', deleteBook);
 
 // seedUserData();
 app.listen(PORT); // kick start the express server to work
