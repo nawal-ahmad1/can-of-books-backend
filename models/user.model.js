@@ -39,4 +39,7 @@ const seedUserData = () => {
   newUser.save();
 };
 
-module.exports = seedUserData;
+module.exports = {
+  userModel,
+  seedUserData,
+};

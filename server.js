@@ -6,7 +6,12 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const axios = require('axios'); // require the package
 const seedUserData = require('./models/user.model');
-const getBooks = require('./controller/book.controller');
+const {
+  getBooks,
+  createBook,
+  updateBook,
+  deleteBook,
+} = require('./controller/book.controller');
 
 app.use(cors());
 
@@ -36,5 +41,11 @@ app.get('/test', function (req, res) {
 
 app.get('/books', getBooks);
 
-seedUserData();
+app.post('/books', createBook);
+
+app.put('/book/:book_idx', updateBook);
+
+app.delete('/book/book_idx', updateBook);
+
+// seedUserData();
 app.listen(PORT); // kick start the express server to work
