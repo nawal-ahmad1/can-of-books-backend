@@ -18,13 +18,13 @@ module.exports = getBooks;
 
 const createBook = (request, response) => {
   console.log(request.body);
-  const { userEmail, bookName } = request.body;
+  const { userEmail, bookName , bookDesc , bookStatus } = request.body;
 
   userModel.findOne({ email: userEmail }, (error, userData) => {
     if (error) {
       response.send(error);
     } else {
-      userData.books.push({ name: bookName });
+      userData.books.push({ name: bookName , description:bookDesc , status: bookStatus});
       userData.save();
       response.json(userData);
     }

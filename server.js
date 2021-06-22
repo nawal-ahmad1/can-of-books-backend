@@ -41,7 +41,7 @@ app.get('/test', function (req, res) {
 
 app.get('/books', getBooks);
 
-app.post('/books', createBook);
+app.post('/book', createBook);
 
 app.put('/book/:book_idx', updateBook);
 

@@ -12,7 +12,7 @@ const userModel = mongoose.model('user', userSchema);
 const seedUserData = () => {
   console.log();
   const newUser = new userModel({
-    email: process.env.EMAIL,
+    email: 'mahmoud.dinah2@gmail.com',
     books: [
       {
         name: 'When Nietzsche Wept',
