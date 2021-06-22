@@ -16,7 +16,8 @@ const seedUserData = () => {
     books: [
       {
         name: 'When Nietzsche Wept',
-        description: 'In 19th-century Vienna, a drama of love, fate, Irvin D. Yalom',
+        description:
+          'In 19th-century Vienna, a drama of love, fate, Irvin D. Yalom',
         status: 'read',
       },
       {
@@ -27,10 +28,10 @@ const seedUserData = () => {
       {
         name: 'Das Parfum',
         description:
-          'n acclaimed bestseller and international sensation, Patrick Suskind',
+          'In acclaimed bestseller and international sensation, Patrick Suskind',
         status: 'currently-reading',
       },
-    ]
+    ],
   });
 
   console.log(newUser);
@@ -38,4 +39,7 @@ const seedUserData = () => {
   newUser.save();
 };
 
-module.exports = userModel;
+module.exports = {
+  userModel,
+  seedUserData,
+};
