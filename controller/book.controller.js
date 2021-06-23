@@ -18,16 +18,16 @@ module.exports = getBooks;
 
 const createBook = (request, response) => {
   console.log(request.body);
-  const { userEmail, bookName, bookDescription, bookStatus } = request.body;
+  const { email, name, description, status } = request.body;
 
-  userModel.findOne({ email: userEmail }, (error, userData) => {
+  userModel.findOne({ email: email }, (error, userData) => {
     if (error) {
       response.send(error);
     } else {
       userData.books.push({
-        name: bookName,
-        description: bookDescription,
-        status: bookStatus,
+        name,
+        description,
+        status,
       });
       userData.save();
       response.json(userData);
@@ -38,16 +38,16 @@ const createBook = (request, response) => {
 const updateBook = (request, response) => {
   console.log(request.params);
   const bookIndex = request.params.book_idx;
-  const { userEmail, bookName, bookDescription, bookStatus } = request.body;
+  const { email, name, description, status } = request.body;
 
-  userModel.findOne({ email: userEmail }, (error, userData) => {
+  userModel.findOne({ email: email }, (error, userData) => {
     if (error) {
       response.send(error);
     } else {
       userData.books.splice(bookIndex, 1, {
-        name: bookName,
-        description: bookDescription,
-        status: bookStatus,
+        name,
+        description,
+        status,
       });
       userData.save();
       response.send(userData);
