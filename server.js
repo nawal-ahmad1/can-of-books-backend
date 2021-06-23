@@ -9,13 +9,11 @@ const seedUserData = require('./models/user.model');
 const {
   getBooks,
   createBook,
-  updateBook,
-  deleteBook,
 } = require('./controller/book.controller');
 
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/myFavoriteBooks', {
+mongoose.connect(process.env.MANGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -41,11 +39,11 @@ app.get('/test', function (req, res) {
 
 app.get('/books', getBooks);
 
-app.post('/books', createBook);
+app.post('/book', createBook);
 
-app.put('/book/:book_idx', updateBook);
+// app.put('/book/:book_idx', updateBook);
 
-app.delete('/book/book_idx', updateBook);
+// app.delete('/book/:book_idx', deleteBook);
 
 // seedUserData();
 app.listen(PORT); // kick start the express server to work

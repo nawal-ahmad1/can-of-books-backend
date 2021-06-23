@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
 });
 
 const userModel = mongoose.model('user', userSchema);
-
+// console.log(userSchema);
 const seedUserData = () => {
   console.log();
   const newUser = new userModel({
@@ -39,7 +39,5 @@ const seedUserData = () => {
   newUser.save();
 };
 
-module.exports = {
-  userModel,
-  seedUserData,
-};
+module.exports = userModel;
+
