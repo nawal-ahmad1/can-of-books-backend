@@ -1,6 +1,6 @@
 'use strict';
 
-const { userModel } = require('../models/user.model');
+const userModel   = require('../models/user.model');
 
 const getBooks = (request, response) => {
   const { email } = request.query;
@@ -14,10 +14,11 @@ const getBooks = (request, response) => {
   });
 };
 
-module.exports = getBooks;
+
 
 const createBook = (request, response) => {
   console.log(request.body);
+
   const { email, name, description, status } = request.body;
 
   userModel.findOne({ email: email }, (error, userData) => {
@@ -31,6 +32,7 @@ const createBook = (request, response) => {
       });
       userData.save();
       response.json(userData);
+
     }
   });
 };
@@ -74,6 +76,5 @@ const deleteBook = (request, response) => {
 module.exports = {
   getBooks,
   createBook,
-  updateBook,
-  deleteBook,
+ 
 };
