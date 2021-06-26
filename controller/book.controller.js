@@ -2,55 +2,42 @@
 
 const { userModel } = require('../models/user.model');
 
-const getBooks = (request, response) => {
-  const { email } = request.query;
+const getBooks = (req, res) => {
+  const { email } = req.query;
 
   userModel.find({ email: email }, (error, user) => {
     if (error) {
-      response.send(error.me);
+      res.send(error.me);
     } else {
-      response.json(user);
+      res.json(user);
     }
   });
 };
 
-module.exports = getBooks;
-
-const createBook = (request, response) => {
-  console.log(request.body);
-  const { email, name, description, status } = request.body;
-
-  userModel.findOne({ email: email }, (error, userData) => {
+const createBook = (req, res) => {
+  const { email, name, description, status } = req.body;
+  console.log(req.body);
+  userModel.findOne({ email: email }, (error, user) => {
     if (error) {
-      response.send(error);
+      res.send(error);
     } else {
-      userData.books.push({
-        name,
-        description,
-        status,
-      });
-      userData.save();
-      response.json(userData);
+      user.Books.push({ name: name, description: description, status: status });
+      user.save();
+      res.json(user);
     }
   });
 };
 
-const updateBook = (request, response) => {
-  console.log(request.params);
-  const bookIndex = request.params.book_idx;
-  const { email, name, description, status } = request.body;
-
-  userModel.findOne({ email: email }, (error, userData) => {
+const updateBook = (req, res) => {
+  const bookIndex = req.params.book_idx;
+  const { email, name, description, status } = req.body;
+  userModel.findOne({ email: email }, (error, user) => {
     if (error) {
-      response.send(error);
+      res.send(error);
     } else {
-      userData.books.splice(bookIndex, 1, {
-        name,
-        description,
-        status,
-      });
-      userData.save();
-      response.send(userData);
+      user.Books.splice(bookIndex, 1, { name, description, status });
+      user.save();
+      res.json(user);
     }
   });
 };
@@ -60,13 +47,13 @@ const deleteBook = (request, response) => {
   const bookIndex = request.params.book_idx;
   const { email } = request.query;
 
-  userModel.findOne({ email: email }, (error, userData) => {
+  userModel.findOne({ email: email }, (error, user) => {
     if (error) {
       response.send(error);
     } else {
-      userData.books.splice(bookIndex, 1);
-      userData.save();
-      response.send(userData);
+      user.Books.splice(bookIndex, 1);
+      user.save();
+      response.send(user);
     }
   });
 };

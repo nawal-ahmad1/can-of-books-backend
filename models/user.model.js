@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bookSchema = require('./book.model');
 
 const userSchema = new mongoose.Schema({
-  email: String,
+  email: { type: String },
   books: [bookSchema],
 });
 
@@ -36,6 +36,5 @@ const seedUserData = () => {
 
   newUser.save();
 };
-
 
 module.exports = { userModel, seedUserData };
