@@ -15,7 +15,7 @@ const {
 
 app.use(cors());
 
-mongoose.connect(process.env.MANGO_URL, {
+mongoose.connect('mongodb://localhost:27017/myFavoriteBooks', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
