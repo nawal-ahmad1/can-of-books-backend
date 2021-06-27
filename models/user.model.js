@@ -3,16 +3,16 @@ const mongoose = require('mongoose');
 const bookSchema = require('./book.model');
 
 const userSchema = new mongoose.Schema({
-  email: { type: String },
+  email: String,
   books: [bookSchema],
 });
 
 const userModel = mongoose.model('user', userSchema);
-// console.log(userSchema);
+
 const seedUserData = () => {
   console.log();
   const newUser = new userModel({
-    email: process.env.EMAIL,
+    email: 'nawalahmad.bme@gmail.com',
     books: [
       {
         name: 'When Nietzsche Wept',
